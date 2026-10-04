@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GameStore Admin</title>
+    <meta name="description" content="Panel administrativo de GameStore, tienda ficticia de videojuegos.">
+    <link rel="icon" type="image/svg+xml" href="img/logo/favicon.svg">
+    <meta http-equiv="refresh" content="1;url=login.html">
+</head>
+<body>
+    <p>Redirigiendo… <a href="login.html">Ir al login</a></p>
+    <script>
+        // Si hay sesión simulada activa va al dashboard; si no, al login.
+        var on = localStorage.getItem('gamestore_logged_in') === 'true' || sessionStorage.getItem('gamestore_logged_in') === 'true';
+        location.replace(on ? 'pages/dashboard.html' : 'login.html');
+    </script>
+</body>
+</html>
