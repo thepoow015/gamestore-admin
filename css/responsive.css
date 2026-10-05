@@ -1,0 +1,55 @@
+/* =========================================================
+   GameStore Admin — Ajustes responsive
+   Desktop-first con puntos de corte: 1199, 991, 767, 575
+   ========================================================= */
+
+@media (max-width: 1199.98px) {
+    .app-content { padding: 1.25rem; }
+    .search-box { width: 260px; }
+}
+
+/* Tablet */
+@media (max-width: 991.98px) {
+    .app-navbar { padding: 0 1rem; }
+    .app-content { padding: 1rem; }
+    .app-footer { padding: .8rem 1rem; }
+    .search-box { width: 220px; }
+    .chart-box { height: 280px; }
+    .login-page { grid-template-columns: 1fr; }
+    .login-hero { display: none; }
+}
+
+/* Móvil grande */
+@media (max-width: 767.98px) {
+    .page-header h1 { font-size: 1.4rem; }
+    .page-actions { width: 100%; }
+    .page-actions .btn, .page-actions .form-select { flex: 1 1 auto; }
+    .search-box { display: none; }
+    .search-box.open {
+        display: block; position: fixed; top: calc(var(--navbar-h) + 6px); left: .75rem; right: .75rem; width: auto; z-index: 1061;
+    }
+    .search-box.open .search-results { min-width: 0; }
+    .stat-card .stat-value { font-size: 1.45rem; }
+    .gs-table > :not(caption) > * > * { padding: .65rem .75rem; }
+    .detail-cover { max-width: 220px; margin-inline: auto; display: block; }
+    .bulk-bar .btn { flex: 1 1 auto; }
+    .pager-wrap { justify-content: center; }
+    .notif-menu { position: fixed !important; top: calc(var(--navbar-h) + 4px) !important; left: .75rem !important; right: .75rem !important; width: auto; transform: none !important; }
+}
+
+@media (min-width: 768px) {
+    .mobile-search-btn { display: none !important; }
+}
+
+/* Móvil pequeño */
+@media (max-width: 575.98px) {
+    .app-content { padding: .85rem; }
+    .gs-card-body { padding: 1rem; }
+    .gs-card-header { padding: .85rem 1rem; }
+    .chart-box, .chart-box.sm { height: 240px; }
+    .brand-text small { display: none; }
+    .top-item, .alert-item { padding: .65rem 1rem; }
+    .price-big { font-size: 1.6rem; }
+    .login-box h1 { font-size: 1.5rem; }
+    .app-navbar .breadcrumb-item.active { font-size: .95rem; overflow: hidden; text-overflow: ellipsis; max-width: 40vw; }
+}

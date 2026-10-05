@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reportes | GameStore Admin</title>
+    <meta name="description" content="Reportes de ventas, pedidos, productos, clientes e inventario de GameStore.">
+    <link rel="icon" type="image/svg+xml" href="../img/logo/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <script>try{document.documentElement.dataset.bsTheme=localStorage.getItem('gamestore_theme')||'dark'}catch(e){}</script>
+</head>
+<body data-page="reportes" data-title="Reportes" data-root="../">
+<div class="app-shell">
+    <div id="sidebar-slot"></div>
+    <div class="app-main">
+        <div id="navbar-slot"></div>
+        <main class="app-content" id="main-content">
+            <header class="page-header">
+                <div><h1>Reportes</h1><p>Ventas, pedidos, productos, clientes e inventario.</p></div>
+                <div class="page-actions dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download me-1"></i>Exportar</button>
+                    <ul class="dropdown-menu dropdown-menu-end" id="exportMenu">
+                        <li><button class="dropdown-item" type="button" data-export="ventas">Ventas mensuales (CSV)</button></li>
+                        <li><button class="dropdown-item" type="button" data-export="productos">Productos (CSV)</button></li>
+                        <li><button class="dropdown-item" type="button" data-export="clientes">Clientes (CSV)</button></li>
+                    </ul>
+                </div>
+            </header>
+
+            <section class="mb-4" aria-labelledby="h-ventas">
+                <h2 class="h5 mb-3" id="h-ventas"><i class="bi bi-cash-coin text-primary me-2"></i>Ventas</h2>
+                <div class="row g-3 mb-3" id="salesKpis"></div>
+                <div class="row g-3">
+                    <div class="col-xl-7"><article class="gs-card h-100"><div class="gs-card-header"><h3>Ventas y pedidos por mes</h3><small class="text-muted">Datos de demostración</small></div>
+                        <div class="gs-card-body"><div class="chart-box"><canvas id="salesChart" role="img" aria-label="Ventas mensuales"></canvas></div></div></article></div>
+                    <div class="col-xl-5"><article class="gs-card h-100"><div class="gs-card-header"><h3>Detalle mensual</h3></div>
+                        <div class="table-responsive"><table class="table gs-table align-middle mb-0"><thead><tr><th>Mes</th><th class="num">Ventas</th><th class="num">Pedidos</th><th class="num">Ticket</th><th class="num">Crec.</th></tr></thead><tbody id="monthlyBody"></tbody></table></div></article></div>
+                </div>
+            </section>
+
+            <section class="mb-4" aria-labelledby="h-pedidos">
+                <h2 class="h5 mb-3" id="h-pedidos"><i class="bi bi-bag text-primary me-2"></i>Pedidos</h2>
+                <div class="row g-3 mb-3" id="ordersKpis"></div>
+                <div class="row g-3">
+                    <div class="col-md-5"><article class="gs-card h-100"><div class="gs-card-header"><h3>Pedidos por estado</h3></div><div class="gs-card-body"><div class="chart-box sm"><canvas id="ordersChart" role="img" aria-label="Pedidos por estado"></canvas></div></div></article></div>
+                    <div class="col-md-7"><article class="gs-card h-100"><div class="gs-card-header"><h3>Ingresos por método de pago</h3></div><div class="gs-card-body"><div class="chart-box sm"><canvas id="paymentChart" role="img" aria-label="Ingresos por método de pago"></canvas></div></div></article></div>
+                </div>
+            </section>
+
+            <section class="mb-4" aria-labelledby="h-productos">
+                <h2 class="h5 mb-3" id="h-productos"><i class="bi bi-controller text-primary me-2"></i>Productos</h2>
+                <div class="row g-3">
+                    <div class="col-md-6 col-xl-3"><article class="gs-card h-100"><div class="gs-card-header"><h3>Más vendidos</h3></div><div id="topSold"></div></article></div>
+                    <div class="col-md-6 col-xl-3"><article class="gs-card h-100"><div class="gs-card-header"><h3>Menos vendidos</h3></div><div id="lowSold"></div></article></div>
+                    <div class="col-md-6 col-xl-3"><article class="gs-card h-100"><div class="gs-card-header"><h3>Stock bajo</h3></div><div id="lowStock"></div></article></div>
+                    <div class="col-md-6 col-xl-3"><article class="gs-card h-100"><div class="gs-card-header"><h3>Agotados</h3></div><div id="outStock"></div></article></div>
+                </div>
+            </section>
+
+            <section class="mb-4" aria-labelledby="h-clientes">
+                <h2 class="h5 mb-3" id="h-clientes"><i class="bi bi-people text-primary me-2"></i>Clientes</h2>
+                <article class="gs-card"><div class="gs-card-header"><h3>Mejores clientes por compras</h3><small class="text-muted">Pedidos no cancelados</small></div><div id="topCustomers"></div></article>
+            </section>
+
+            <section class="mb-2" aria-labelledby="h-inventario">
+                <h2 class="h5 mb-3" id="h-inventario"><i class="bi bi-box-seam text-primary me-2"></i>Inventario</h2>
+                <div class="row g-3 mb-3" id="inventoryKpis"></div>
+                <article class="gs-card"><div class="gs-card-header"><h3>Valor del inventario por categoría</h3></div><div class="gs-card-body"><div class="chart-box"><canvas id="inventoryChart" role="img" aria-label="Valor del inventario por categoría"></canvas></div></div></article>
+            </section>
+        </main>
+        <div id="footer-slot"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script src="../js/data.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/ui.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/notifications.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/products.js"></script>
+<script src="../js/reports.js"></script>
+<script>GS.ready(Reports.init);</script>
+</body>
+</html>
