@@ -55,31 +55,12 @@ Panel administrativo moderno para una tienda ficticia de videojuegos, construido
 | --- | --- |
 | _(captura)_ | _(captura)_ |
 
-## Demo
-
-<!-- Reemplaza con tu URL cuando publiques en GitHub Pages -->
-`https://TU-USUARIO.github.io/gamestore-admin/`
 
 Credenciales de demostración:
 
 - Email: `admin@gamestore.com`
 - Contraseña: `123456`
 
-## Instalación
-
-No requiere instalación ni Node.js.
-
-1. Clona o descarga el repositorio:
-   ```bash
-   git clone https://github.com/TU-USUARIO/gamestore-admin.git
-   ```
-2. Abre `index.html` en tu navegador (o sírvelo con cualquier servidor estático).
-
-### Publicar en GitHub Pages
-
-1. Sube el proyecto a un repositorio llamado `gamestore-admin`.
-2. En *Settings → Pages* elige la rama `main` y la carpeta `/ (root)`.
-3. Todas las rutas son relativas, por lo que funciona dentro de `/gamestore-admin/`.
 
 ## Estructura
 
